@@ -1,0 +1,23 @@
+﻿@page
+@model IndexModel
+@using rpiThermo.logic
+@using System;
+@using System.Windows;
+@{
+    ViewData["Title"] = "Home page";
+}
+@{
+    Temps temps = new Temps();
+    string text = temps.GetTemp(3).ToString();
+}
+<script type="text/javascript">
+$(function() {
+    // poll every 5 seconds
+    setInterval(@text = temps.GetTemp(3).ToString();, 5000);
+}
+</script>
+<div class="text-center">
+    <h1 class="display-4">@text</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
