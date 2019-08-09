@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using rpiThermo.Models;
 
 namespace rpiThermo.Migrations
 {
     [DbContext(typeof(rpiThermoContext))]
-    partial class rpiThermoContextModelSnapshot : ModelSnapshot
+    [Migration("20190807202628_fixes3")]
+    partial class fixes3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

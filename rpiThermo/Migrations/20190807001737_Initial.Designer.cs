@@ -29,9 +29,9 @@ namespace rpiThermo.Migrations
 
                     b.Property<int>("Day");
 
-                    b.Property<TimeSpan>("End_Time");
+                    b.Property<DateTime>("End_Time");
 
-                    b.Property<TimeSpan>("Start_Time");
+                    b.Property<DateTime>("Start_Time");
 
                     b.Property<int>("Temperature");
 

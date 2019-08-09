@@ -11,10 +11,12 @@ namespace rpiThermo.Models
         public int ID { get; set; }
         [Display(Name = "Start Time")]
         [DataType(DataType.Time)]
-        public TimeSpan Start_Time { get; set; }
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm tt}")]
+        public DateTime Start_Time { get; set; }
         [Display(Name = "End Time")]
         [DataType(DataType.Time)]
-        public TimeSpan End_Time { get; set; }
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm tt}")]
+        public DateTime End_Time { get; set; }
 
         public DayOfWeek Day { get; set; }
         public int Temperature { get; set; }

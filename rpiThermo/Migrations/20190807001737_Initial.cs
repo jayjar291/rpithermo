@@ -14,8 +14,8 @@ namespace rpiThermo.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Start_Time = table.Column<TimeSpan>(nullable: false),
-                    End_Time = table.Column<TimeSpan>(nullable: false),
+                    Start_Time = table.Column<DateTime>(nullable: false),
+                    End_Time = table.Column<DateTime>(nullable: false),
                     Day = table.Column<int>(nullable: false),
                     Temperature = table.Column<int>(nullable: false)
                 },

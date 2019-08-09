@@ -7,10 +7,37 @@
 @{
     Temps temps = new Temps();
     string text = temps.GetTemp(3).ToString();
+    bool testing = new bool();
 }
-<div class="text-center">
-    <h1 class="display-4">@text</h1>
-    <input class="button"
-    <a asp-page="/Schedules/Index">Schedules</a>
-</div>
+<form>
+    <div class="text-center">
+        <h1 class="display-4">Current Temp: @text °F</h1>
+        <div class="text-right">
+            <input type="button" class="button" onclick="window.location='/Schedules/Index'" value="Schedules" />
+            <p style="text-align:left; float:left">@DateTime.Now.DayOfWeek @DateTime.Now.ToString("hh:mm tt")</p>
+            <div id="slider-range-max" style="width:90px"></div>
+            <p>Your slider has a value of <span id="amount"></span></p>
+        </div>
+    </div>
+</form>
+
+@section scripts{
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#slider-range-max").slider({
+                min: 1,
+                max: 3,
+                value: 1,
+                slide: function (event, ui) {
+                    $("#amount").html(ui.value);
+                }
+            });
+            $("#amount").html($("#slider-range-max").slider("value"));
+        });
+    </script>
+}
 
