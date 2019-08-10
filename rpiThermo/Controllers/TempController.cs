@@ -3,14 +3,27 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
-namespace rpiThermo.logic
+namespace rpiThermo.Controllers
 {
-    public class Temps
+    [Route("api/[controller]")]
+    [ApiController]
+    public class TempController : ControllerBase
     {
-        public double GetTemp(int type)
+        // GET: api/Temp
+        [HttpGet]
+        public IEnumerable<string> Get()
         {
-            switch (type)
+            return new string[] { "value1", "value2" };
+        }
+
+        // GET: api/Temp/5
+        [HttpGet("{id}", Name = "Get")]
+        public double Get(int id)
+        {
+            switch (id)
             {
                 case 1:
                     {
@@ -54,6 +67,24 @@ namespace rpiThermo.logic
                 default:
                     return 70;
             }
+        }
+
+        // POST: api/Temp
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+        }
+
+        // PUT: api/Temp/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
         }
     }
 }

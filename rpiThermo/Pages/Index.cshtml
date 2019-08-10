@@ -1,17 +1,11 @@
 ﻿@page
 @model IndexModel
-@using rpiThermo.logic
 @{
     ViewData["Title"] = "Home page";
 }
-@{
-    Temps temps = new Temps();
-    string text = temps.GetTemp(3).ToString();
-    bool testing = new bool();
-}
 <form>
     <div class="text-center">
-        <h1 class="display-4">Current Temp: @text °F</h1>
+        <h1 class="display-4">Current Temp: <span id="temperature"></span>°F</h1>
         <div class="text-right">
             <input type="button" class="button" onclick="window.location='/Schedules/Index'" value="Schedules" />
             <p style="text-align:left; float:left">@DateTime.Now.DayOfWeek @DateTime.Now.ToString("hh:mm tt")</p>
@@ -38,6 +32,19 @@
             });
             $("#amount").html($("#slider-range-max").slider("value"));
         });
+    </script>
+    <script>
+        setInterval(GetTemps, 5000);
+        function GetTemps() {
+            $.ajax({
+                url: "/api/temp/3", success: function (data) {
+                    $("#temperature").html(data);
+                }
+            });
+        }
+        function GetDateTime() {
+
+        }
     </script>
 }
 
